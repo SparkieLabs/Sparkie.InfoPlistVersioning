@@ -1,4 +1,7 @@
 # Sparkie.InfoPlistVersioning
+
+[![NuGet Package](https://img.shields.io/nuget/v/Sparkie.InfoPlistVersioning.svg)](https://www.nuget.org/packages/Sparkie.InfoPlistVersioning)
+
 An MSBuild Task to update Info.plist version entries.
 
 ## InfoPlistUpdaterTask
