@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <!-- Change the default location where NuGet will put the build output -->
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)\artifacts\</PackageOutputPath>
+    <!-- Suppresses the warnings about the package not having assemblies in lib/*/.dll.-->
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <PackageVersion>1.0.0-alpha</PackageVersion>
+    <Authors>Sparkie</Authors>
+    <PackageId>Sparkie.InfoPlistVersioning</PackageId>
+    <Description>Adds an MSBuild task that updates the version entries in iOS/MacOS Info.plist files. It is compatible with Nerdbank.GitVersioning. For docs see GitHub repo.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright (c) Sparkie 2022</Copyright>
+    <PackageProjectUrl>https://github.com/sparkie108/Sparkie.InfoPlistVersioning</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sparkie108/Sparkie.InfoPlistVersioning</RepositoryUrl>
+    <PackageTags>git, versioning, version, Info.plist</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- files in the build/ directory run per target framework -->
+    <None Include="build\**">
+      <Pack>true</Pack>
+      <PackagePath>build\</PackagePath>
+    </None>
+    <!-- files in the buildMultiTargeting/ directory run once 
+       per project (regardless of # of target frameworks), 
+       but *only* if the project is multi-targeted -->
+    <None Include="buildMultiTargeting\**">
+      <Pack>true</Pack>
+      <PackagePath>buildMultiTargeting\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.0.0" />
+    <!-- Marks all packages as 'local only' so they don't end up in the nuspec. -->
+    <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>
