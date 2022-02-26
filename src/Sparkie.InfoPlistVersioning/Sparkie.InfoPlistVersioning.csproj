@@ -14,7 +14,7 @@
     <PackageOutputPath>$(MSBuildThisFileDirectory)\artifacts\</PackageOutputPath>
     <!-- Suppresses the warnings about the package not having assemblies in lib/*/.dll.-->
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <PackageVersion>1.0.0-alpha</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <Authors>Sparkie</Authors>
     <PackageId>Sparkie.InfoPlistVersioning</PackageId>
     <Description>Adds an MSBuild task that updates the version entries in iOS/MacOS Info.plist files. It is compatible with Nerdbank.GitVersioning. For docs see GitHub repo.</Description>
