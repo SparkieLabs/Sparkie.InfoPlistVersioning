@@ -35,9 +35,11 @@ dotnet add package Sparkie.InfoPlistVersioning
 Add the following entry to the iOS app project file:
 
 ```xml
-  <Target Name="InfoPlistUpdaterTask" AfterTargets="GetBuildVersion">
+  <Target Name="InfoPlistUpdaterTask" DependsOnTargets="GetBuildVersion" BeforeTargets="CollectAppManifests">
     <InfoPlistUpdaterTask CFBundleVersion="$(BuildVersion3Components)" CFBundleShortVersionString="$(BuildVersion3Components)" />
   </Target>
 ```
 
-Make sure the task executes after the Nerdbank.GitVersioning GetBuildVersion task otherwise the BuildVersion3Components property will not be set.
+Make sure the task executes:
+- after the Nerdbank.GitVersioning GetBuildVersion task otherwise the BuildVersion3Components property will not be set.
+- before CollectAppManifests otherwise plist.Info will not updated before the app manifest is built.
