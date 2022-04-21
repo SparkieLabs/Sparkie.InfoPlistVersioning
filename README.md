@@ -2,7 +2,7 @@
 
 [![NuGet Package](https://img.shields.io/nuget/v/Sparkie.InfoPlistVersioning.svg)](https://www.nuget.org/packages/Sparkie.InfoPlistVersioning)
 
-An MSBuild Task to update Info.plist version entries.
+An MSBuild Task to update Info.plist version entries in Xamarin and MAUI iOS apps.
 
 ## InfoPlistUpdaterTask
 
